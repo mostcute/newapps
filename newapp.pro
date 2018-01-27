@@ -28,7 +28,8 @@ SOURCES += \
         mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    global_variable.h
 
 CONFIG += mobility
 MOBILITY = 
