@@ -34,3 +34,6 @@ HEADERS += \
 CONFIG += mobility
 MOBILITY = 
 
+RESOURCES += \
+    resource.qrc
+
