@@ -25,15 +25,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    mytitlebar.cpp \
+    hostinfo.cpp
 
 HEADERS += \
         mainwindow.h \
-    global_variable.h
+    global_variable.h \
+    mytitlebar.h \
+    hostinfo.h
 
 CONFIG += mobility
 MOBILITY = 
 
 RESOURCES += \
     resource.qrc
+
+RC_ICONS = sys.ico
 

@@ -1,7 +1,10 @@
 #include "mainwindow.h"
+
 #include <QIcon>
 #include <QPixmap>
 #include <QMenu>
+
+
 
 
 
@@ -9,7 +12,25 @@ mainwindow::mainwindow(QWidget *parent)
     : QWidget(parent)
 {
 
+    //标题栏
+    title = new mytitlebar;
+    connect(title , SIGNAL(move_pos_go(QPoint)), this, SLOT(move_pos_here(QPoint)));
+    hostinfo * label = new hostinfo;
+    mainstack = new QStackedWidget;
 
+    mainstack->addWidget(label);
+    mainstack->setCurrentWidget(label);
+
+    vlayout = new QVBoxLayout;
+    vlayout->addWidget(title);
+    vlayout->addWidget(mainstack);
+    vlayout->setSpacing(0);
+    vlayout->setContentsMargins(0, 0, 0, 0);//无间距
+
+
+    this->setLayout(vlayout);
+
+    //托盘
     QSystemTrayIcon *system_tray;
     system_tray = new QSystemTrayIcon();
            //放在托盘提示信息、托盘图标
@@ -75,4 +96,9 @@ void mainwindow::closeEvent(QCloseEvent *e)
     hide();
     e->ignore();
 
+}
+
+void mainwindow::move_pos_here(QPoint point)
+{
+    this->move(point);
 }
