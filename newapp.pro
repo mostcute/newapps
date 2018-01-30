@@ -44,9 +44,12 @@ RESOURCES += \
 RC_ICONS = sys.ico
 # import dll
 win32: LIBS += -L$$PWD/bin/ -lNBaseUiKit
+
 DEPENDPATH += $$PWD/bin
 #
 
 # import dll file
 include($$PWD/NBaseUiKit/NBaseUiKit_inc.pri)
+include( $$PWD/sharedlibrary/JQNetwork/JQNetwork.pri )
+
 

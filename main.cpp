@@ -3,7 +3,6 @@
 #include <QObject>
 #include "global_variable.h"
 
-#include "nbaseminiappwidget.h"
 #include <QStackedWidget>
 
 #include <QLabel>
@@ -11,29 +10,11 @@
 #include <QTimer>
 #include <QVBoxLayout>
 #include "QMap"
-#include "nbasemoveablewidget.h"
-#include "nbasefadewidget.h"
-#include "nbaseminiappwidget.h"
-#include "nbaseshadowwidget.h"
-#include "nbasepopwidget.h"
-#include "nbasesnowlabel.h"
-#include "nbasecircleanimationwidget.h"
-#include "nbaseledwidget.h"
-#include "nbasemarqueelabel.h"
-#include "nbaseqrencodewidget.h"
-#include "nbaseroundprogressbar.h"
-#include "nbasetoastr.h"
-#include "nbaseshadowlabel.h"
-#include "nbasewaitdialog.h"
-#include "ntouchlistwidget.h"
-#include "nbaserotatingstackedwidget.h"
-#include "nbasecaptcha.h"
-#include "nbaseimagecropper.h"
-#include "nbaseswitchbutton.h"
-#include "nbasereelwidget.h"
-#include "nbaselogowidget.h"
-#include "nbaseclickwave.h"
-#include "nbasecountdown.h"
+#include <NBlib>
+#include <QStandardPaths>
+#include <QFile>
+#include <QFileInfo>
+#include <JQNetwork>
 
 QStackedWidget * mainstack;
 int main(int argc, char *argv[])
@@ -56,9 +37,98 @@ int main(int argc, char *argv[])
     for(int index = 0;index != 200;index++) test_case_18->addItem(QString("测试项目:%1").arg(index));
     //
 
+    auto client = JQNetworkClient::createClient( true );
+
+    // 初始化客户端
+    if ( !client->begin() )
+    {
+        qDebug() << "Client: begin fail";
+        return -1;
+    }
+    qDebug() << "Client: begin succeed";
+    qDebug() << "Client: waitForCreateConnect:" << client->waitForCreateConnect( "123.207.182.40", 26432 );
+    qDebug() << "Client: sendFileData reply:" << client->sendFileData(
+                "123.207.182.40",                                            // 服务端的IP地址
+                26432,                                                  // 服务端的端口
+                "fileTransfer",                                         // 需要调用的服务端方法名称
+                QFileInfo( "C:/Users/43704/Desktop/AD/MKS(1).docx" ),                            // 需要发送的文件
+                [ ](const auto &, const auto &)
+                {
+                    qDebug() << "Client: send file succeed";
+                },
+                [ ](const auto &)
+                {
+                    qDebug() << "Client: send file fail";
+                }
+    );
 
 
     return a.exec();
 }
+
+/*
+
+// Qt lib import
+#include <QCoreApplication>
+#include <QStandardPaths>
+#include <QFile>
+#include <QFileInfo>
+
+// JQNetwork lib improt
+#include <JQNetwork>
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    JQNetwork::printVersionInformation();
+
+    // 创建客户端
+    auto client = JQNetworkClient::createClient( true );
+
+    // 初始化客户端
+    if ( !client->begin() )
+    {
+        qDebug() << "Client: begin fail";
+        return -1;
+    }
+    qDebug() << "Client: begin succeed";
+
+    // 以阻塞方式创建连接
+    qDebug() << "Client: waitForCreateConnect:" << client->waitForCreateConnect( "127.0.0.1", 26432 );
+
+    // 创建一个测试文件
+    const auto &&sourceFilePath = QString( "%1/%2" ).arg(
+                QStandardPaths::writableLocation( QStandardPaths::TempLocation ),
+                "jqnetwork_filetransferdemo"
+            );
+    {
+        QFile file( sourceFilePath );
+        file.open( QIODevice::WriteOnly );
+        file.write( QByteArray( "FileTransferDemo" ) );
+        file.waitForBytesWritten( 30 * 1000 );
+    }
+
+    // 发送文件
+    qDebug() << "Client: sendFileData reply:" << client->sendFileData(
+                "127.0.0.1",                                            // 服务端的IP地址
+                26432,                                                  // 服务端的端口
+                "fileTransfer",                                         // 需要调用的服务端方法名称
+                QFileInfo( sourceFilePath ),                            // 需要发送的文件
+                [ ](const auto &, const auto &)
+                {
+                    qDebug() << "Client: send file succeed";
+                },
+                [ ](const auto &)
+                {
+                    qDebug() << "Client: send file fail";
+                }
+    );
+
+    return a.exec();
+}
+
+
+
+*/
 
 
