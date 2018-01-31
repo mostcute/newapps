@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
+#include "global_variable.h"
+#include <QStackedWidget>
+#include "loginwidget.h"
+
 
 class mainwindow : public QWidget
 {
@@ -10,6 +14,10 @@ class mainwindow : public QWidget
 public:
     mainwindow(QWidget *parent = 0);
     ~mainwindow();
+
+private:
+    QStackedWidget *ViewStack;
+    loginwidget *loginview;
 };
 
 #endif // MAINWINDOW_H
