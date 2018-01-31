@@ -25,12 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    global_variable.c \
+    loginwidget.cpp
 
 HEADERS += \
         mainwindow.h \
-    global_variable.h
+    global_variable.h \
+    loginwidget.h
 
 CONFIG += mobility
 MOBILITY = 
+
+DISTFILES += \
+    template
 
