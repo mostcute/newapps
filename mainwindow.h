@@ -2,9 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
-#include "global_variable.h"
+
 #include <QStackedWidget>
 #include "loginwidget.h"
+#include <QVBoxLayout>
 
 
 class mainwindow : public QWidget
@@ -18,6 +19,7 @@ public:
 private:
     QStackedWidget *ViewStack;
     loginwidget *loginview;
+    QVBoxLayout *mainlayout;
 };
 
 #endif // MAINWINDOW_H

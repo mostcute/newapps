@@ -26,13 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    global_variable.c \
-    loginwidget.cpp
+    loginwidget.cpp \
+    masklabel.cpp
 
 HEADERS += \
         mainwindow.h \
-    global_variable.h \
-    loginwidget.h
+    loginwidget.h \
+    masklabel.h
 
 CONFIG += mobility
 MOBILITY = 

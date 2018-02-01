@@ -4,6 +4,12 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QGridLayout>
+#include "masklabel.h"
+
+
 
 class loginwidget : public QWidget
 {
@@ -14,6 +20,11 @@ public:
 private:
     QVBoxLayout *wlayout;
     QLabel *testlabel;
+    MaskLabel *headphotolabel;
+    QLineEdit *usrname;
+    QLineEdit *psd;
+    QPushButton * loginbtn;
+    QPushButton * regstbtn;
 
 signals:
 
