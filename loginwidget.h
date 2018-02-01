@@ -20,11 +20,13 @@ public:
 private:
     QVBoxLayout *wlayout;
     QLabel *testlabel;
-    MaskLabel *headphotolabel;
+   // MaskLabel *headphotolabel;
+    QLabel *headphotolabel;
     QLineEdit *usrname;
     QLineEdit *psd;
     QPushButton * loginbtn;
     QPushButton * regstbtn;
+    QLabel *flashphoto;
 
 signals:
 
