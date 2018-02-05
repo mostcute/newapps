@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include "masklabel.h"
+#include <QObject>
 
 
 
@@ -29,8 +30,10 @@ private:
     QLabel *flashphoto;
 
 signals:
+    void login_success();
 
 public slots:
+    void login_slot();
 };
 
 #endif // LOGINWIDGET_H

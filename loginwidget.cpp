@@ -2,6 +2,8 @@
 #include <QPalette>
 #include <QString>
 #include <QPixmap>
+#include <QFile>
+
 
 extern QSize screensize;
 extern QSize screensize_2;
@@ -51,6 +53,9 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      wlayout->setSpacing(0);
    //  wlayout->setStretchFactor(usrname,2);
 
+
+
+
      psd = new QLineEdit;
      psd->setMaximumWidth(screensize.width()*3/4);
      psd->setMinimumWidth(screensize.width()*2/3);
@@ -58,6 +63,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      psd->setEchoMode(QLineEdit::Password);
      psd->setAttribute(Qt::WA_TranslucentBackground);
      wlayout->addWidget(psd,0,Qt::AlignHCenter);
+
 
     // wlayout->addSpacing(100);
     //  wlayout->setStretchFactor(psd,1);
@@ -91,8 +97,9 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      wlayout->addSpacing(200);
 
 
+     connect(loginbtn, SIGNAL(clicked(bool)), this, SLOT(login_slot()));
+     this->setLayout(wlayout);
 
-      this->setLayout(wlayout);
 
 }
 
@@ -100,6 +107,11 @@ loginwidget::~loginwidget()
 {
     delete wlayout;
     delete testlabel;
+}
+
+void loginwidget::login_slot()
+{
+    emit login_success();
 }
 
 /*
