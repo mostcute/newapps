@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     loginwidget.cpp \
-    masklabel.cpp
+    masklabel.cpp \
+    testwidget.cpp
 
 HEADERS += \
         mainwindow.h \
     loginwidget.h \
-    masklabel.h
+    masklabel.h \
+    testwidget.h
 
 CONFIG += mobility
 MOBILITY = 
