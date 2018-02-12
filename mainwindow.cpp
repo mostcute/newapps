@@ -22,7 +22,8 @@ mainwindow::~mainwindow()
 }
 void mainwindow::login_success_slot()
 {
-   show_stackwidget(create_testwidget());
+   //show_stackwidget(create_testwidget());
+     show_stackwidget(create_indexview());
 }
 void mainwindow::create_framework()
 {
@@ -43,6 +44,12 @@ QWidget  * mainwindow::create_testwidget()
     testview = new testwidget;
     ViewStack->addWidget(testview);
     return testview;
+}
+QWidget  * mainwindow::create_indexview()
+{
+    indexview = new index;
+    ViewStack->addWidget(indexview);
+    return indexview;
 }
 
 void mainwindow::show_stackwidget(QWidget  *widget)
