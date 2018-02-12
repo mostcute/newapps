@@ -28,29 +28,27 @@ SOURCES += \
         mainwindow.cpp \
     loginwidget.cpp \
     masklabel.cpp \
-<<<<<<< HEAD
     testwidget.cpp \
     index.cpp \
     friendlist.cpp \
     MegaScrollBar.cpp \
-    ScrollButton.cpp
-=======
+    ScrollButton.cpp \
+
     testwidget.cpp
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
 
 HEADERS += \
         mainwindow.h \
     loginwidget.h \
     masklabel.h \
-<<<<<<< HEAD
     testwidget.h \
     index.h \
     friendlist.h \
     MegaScrollBar.h \
     ScrollButton.h
-=======
-    testwidget.h
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
+
+
 
 CONFIG += mobility
 MOBILITY = 

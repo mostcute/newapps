@@ -22,12 +22,11 @@ mainwindow::~mainwindow()
 }
 void mainwindow::login_success_slot()
 {
-<<<<<<< HEAD
+
    //show_stackwidget(create_testwidget());
      show_stackwidget(create_indexview());
-=======
-   show_stackwidget(create_testwidget());
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
+
 }
 void mainwindow::create_framework()
 {
@@ -48,15 +47,14 @@ QWidget  * mainwindow::create_testwidget()
     testview = new testwidget;
     ViewStack->addWidget(testview);
     return testview;
-<<<<<<< HEAD
+
 }
 QWidget  * mainwindow::create_indexview()
 {
     indexview = new index;
     ViewStack->addWidget(indexview);
     return indexview;
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
 }
 
 void mainwindow::show_stackwidget(QWidget  *widget)

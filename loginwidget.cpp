@@ -3,10 +3,9 @@
 #include <QString>
 #include <QPixmap>
 #include <QFile>
-<<<<<<< HEAD
+
 #include <QMessageBox>
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
 
 
 extern QSize screensize;
@@ -102,10 +101,9 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
 
 
      connect(loginbtn, SIGNAL(clicked(bool)), this, SLOT(login_slot()));
-<<<<<<< HEAD
+
      connect(regstbtn, SIGNAL(clicked(bool)), this, SLOT(register_slot()));
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
      this->setLayout(wlayout);
 
 
@@ -121,15 +119,14 @@ void loginwidget::login_slot()
 {
     emit login_success();
 }
-<<<<<<< HEAD
+
 void loginwidget::register_slot()
 {
     QMessageBox::warning(this, tr("警告！"),tr("用户名或密码错误！"),QMessageBox::Yes);
 
 
 }
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
 
 /*
      QString  a;

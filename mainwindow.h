@@ -6,10 +6,9 @@
 #include <QStackedWidget>
 #include "loginwidget.h"
 #include "testwidget.h"
-<<<<<<< HEAD
+
 #include "index.h"
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
+
 #include <QVBoxLayout>
 #include <QList>
 
@@ -29,19 +28,11 @@ private:
     loginwidget *loginview;
     testwidget *testview;
     QVBoxLayout *mainlayout;
-<<<<<<< HEAD
     index * indexview;
-
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
-
     void create_framework();
     QWidget  * create_loginwidget();
     QWidget  * create_testwidget();
-<<<<<<< HEAD
     QWidget  * create_indexview();
-=======
->>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
     void add_winlist(char* name,void* widget);
 
 public slots:
