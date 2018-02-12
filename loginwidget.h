@@ -34,7 +34,10 @@ signals:
 
 public slots:
     void login_slot();
+<<<<<<< HEAD
     void register_slot();
+=======
+>>>>>>> 190fa6dc33e7bdef75de5a6499fda4b3d0b66027
 };
 
 #endif // LOGINWIDGET_H
