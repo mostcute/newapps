@@ -41,19 +41,21 @@
         switch ( event->type() )
         {
         case QEvent::Enter:
-            m_scrollBtn->show();
+          //  m_scrollBtn->show();
             break;
 
         case QEvent::Leave:
-            m_scrollBtn->hide();
+          //  m_scrollBtn->hide();
             break;
 
         case QEvent::Resize:
             onResize( static_cast< QResizeEvent * >( event ) );
             break;
+        default : return QWidget::eventFilter( obj, event );
+        break;
         }
 
-        return QWidget::eventFilter( obj, event );
+      return QWidget::eventFilter( obj, event );//这句没用了，为了去掉警告
     }
 
     void MegaScrollBar::onResize( QResizeEvent *e )
@@ -72,7 +74,7 @@
     void MegaScrollBar::updatePos()
     {
         QScrollBar *sb = m_view->verticalScrollBar();
-        const int min = sb->minimum();
+       // const int min = sb->minimum();
         const int val = sb->value();
         const int max = sb->maximum();
         const int x = pos().x() + ( width() - m_scrollBtn->width() ) / 2;
