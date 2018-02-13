@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QListWidget>
 #include <QMouseEvent>
+#include "MegaScrollBar.h"
 
 class friendlist : public QListWidget
 {
@@ -28,6 +29,7 @@ private:
     int originPosY;
     int originPosX;
     bool isMoved;
+    MegaScrollBar *bar;
 
 signals:
 

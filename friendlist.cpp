@@ -1,9 +1,8 @@
 #include "friendlist.h"
 #include <QPalette>
 #include <QPixmap>
-#include "MegaScrollBar.h"
 #include <QScrollBar>
-
+#include "nbasetoastr.h"
 friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
 {    isMoved = false;
      frienditem = new QWidget;
@@ -78,7 +77,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
 
 
     // this->setContentsMargins(0,0,0,0);
-     MegaScrollBar *bar = new MegaScrollBar(this);
+     bar = new MegaScrollBar(this);
      //this->setVerticalScrollBar(bar);
      bar->resize( 40, 30 ); // First arg - width of scroller
 
@@ -104,6 +103,8 @@ void friendlist::mouseMoveEvent(QMouseEvent *event)
     originPosY = event->globalY();
     originPosX = event->globalX();
     isMoved = true;
+    bar->show();
+    bar->m_scrollBtn->show();
     QListWidget::mouseMoveEvent(event);
 }
 
@@ -119,14 +120,16 @@ void friendlist::mouseReleaseEvent(QMouseEvent *event)
     }
     if(isMoved){
         if(varDiff<=0){
-         //   NBaseToastr * tempToa = new NBaseToastr(this, "已经到达顶部");
-            //tempToa->toastr();
+            NBaseToastr * tempToa = new NBaseToastr(this, "已经到达顶部",400,100);
+            tempToa->toastr();
         } else if(varDiff >= verticalScrollBar()->maximum()){
-         //   NBaseToastr * tempToa = new NBaseToastr(this, "已经到达底部");
-            //tempToa->toastr();
+            NBaseToastr * tempToa = new NBaseToastr(this, "已经到达底部",400,100);
+            tempToa->toastr();
         }
     }
     isMoved = false;
+    bar->hide();//隐藏滑动条
+    bar->m_scrollBtn->hide();
     originPosY = event->globalY();
     originPosX = event->globalX();
     QListWidget::mouseReleaseEvent(event);

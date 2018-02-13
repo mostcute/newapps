@@ -33,6 +33,7 @@ SOURCES += \
     friendlist.cpp \
     MegaScrollBar.cpp \
     ScrollButton.cpp \
+    nbasetoastr.cpp
 
     testwidget.cpp
 
@@ -45,7 +46,9 @@ HEADERS += \
     index.h \
     friendlist.h \
     MegaScrollBar.h \
-    ScrollButton.h
+    ScrollButton.h \
+    nbasetoastr.h \
+    nbaseuikit_global.h
 
 
 
