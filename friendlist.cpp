@@ -20,16 +20,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      frienditem3->setPalette(pal1);
      frienditem4->setPalette(pal1);
      }
-    /* frienditem->setMinimumHeight(700);
-     frienditem1->setMinimumHeight(700);
-     frienditem2->setMinimumHeight(700);
-     frienditem3->setMinimumHeight(700);
-     frienditem4->setMinimumHeight(700);
-     frienditem->setMaximumHeight(700);
-     frienditem1->setMaximumHeight(700);
-     frienditem2->setMaximumHeight(700);
-     frienditem3->setMaximumHeight(700);
-     frienditem4->setMaximumHeight(700);*/
+
      QListWidgetItem *item = new QListWidgetItem;
      QListWidgetItem *item1 = new QListWidgetItem;
      QListWidgetItem *item2 = new QListWidgetItem;
@@ -70,7 +61,9 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      }
      this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     // this->setViewportMargins(0,0,0,0);
-     this->setSpacing(10);
+     this->setSpacing(0);
+
+
      this->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     // this->setStyleSheet({"border: none"});
 

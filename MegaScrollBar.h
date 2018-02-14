@@ -19,7 +19,7 @@ class QResizeEvent;
     public:
         MegaScrollBar( QAbstractItemView *parentView );
         ~MegaScrollBar();
-          QPointer< QWidget > m_scrollBtn;
+        QPointer< QWidget > m_scrollBtn;
 
     private slots:
         void updatePos();

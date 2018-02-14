@@ -6,7 +6,7 @@ index::index(QWidget *parent) : QWidget(parent)
 {
 
     wlayout = new QVBoxLayout;;
-    topline = new QWidget;
+    topline = new flisttopline;
     bottomline = new QWidget;
     centerline = new QWidget;
     myfriends = new friendlist;
@@ -20,15 +20,7 @@ index::index(QWidget *parent) : QWidget(parent)
     pal1.setBrush(QPalette::Window,QBrush(pixmap1));
     bottomline->setPalette(pal1);
 
-    QPalette pal2;
-    QPixmap pixmap2("assets:/pic/mainpic/toplinetest.png");
-    //QPixmap pixmap("I:/qtandgit/newapp/android/android/assets/pic/background.jpg");
-    pal2.setBrush(QPalette::Window,QBrush(pixmap2));
-    topline->setPalette(pal2);
 
-   //wlayout->addWidget(topline,0,Qt::AlignHCenter);//居中显示
-    topline->setMaximumHeight(150);
-    topline->setMinimumHeight(150);
     bottomline->setMaximumHeight(200);
     bottomline->setMinimumHeight(200);
 

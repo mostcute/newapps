@@ -33,7 +33,9 @@ SOURCES += \
     friendlist.cpp \
     MegaScrollBar.cpp \
     ScrollButton.cpp \
-    nbasetoastr.cpp
+    nbasetoastr.cpp \
+    flisttopline.cpp \
+    extrafont.cpp
 
     testwidget.cpp
 
@@ -48,7 +50,9 @@ HEADERS += \
     MegaScrollBar.h \
     ScrollButton.h \
     nbasetoastr.h \
-    nbaseuikit_global.h
+    nbaseuikit_global.h \
+    flisttopline.h \
+    extrafont.h
 
 
 
