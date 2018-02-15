@@ -7,25 +7,25 @@ index::index(QWidget *parent) : QWidget(parent)
 
     wlayout = new QVBoxLayout;;
     topline = new flisttopline;
-    bottomline = new QWidget;
-    centerline = new QWidget;
+    bottomline = new flistbottomline;
+    centerline = new QStackedWidget;
     myfriends = new friendlist;
+    myself = new testwidget;
+    myclub = new testwidget;
 
+    centerline->addWidget(myfriends);
+    centerline->addWidget(myself);
+    centerline->addWidget(myclub);
+    connect(bottomline->group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(groupClicked()));
+
+    centerline->setCurrentWidget(myfriends);
 
 
    // this->setAutoFillBackground(true); // 这句要加上, 否则可能显示不出背景图.
-    QPalette pal1;
-    QPixmap pixmap1("assets:/pic/mainpic/buttomlinetest.png");
-    //QPixmap pixmap("I:/qtandgit/newapp/android/android/assets/pic/background.jpg");
-    pal1.setBrush(QPalette::Window,QBrush(pixmap1));
-    bottomline->setPalette(pal1);
 
-
-    bottomline->setMaximumHeight(200);
-    bottomline->setMinimumHeight(200);
 
     wlayout->addWidget(topline);//
-    wlayout->addWidget(myfriends);//
+    wlayout->addWidget(centerline);//
     wlayout->addWidget(bottomline);//
     wlayout->setContentsMargins(0,0,0,0);
     //wlayout->setMargin(0);
@@ -36,5 +36,30 @@ index::index(QWidget *parent) : QWidget(parent)
 index:: ~index()
 {
 
+
+}
+void index::groupClicked()
+{
+    QList<QAbstractButton*> list = bottomline->group->buttons();
+        foreach (QAbstractButton *pButton, list)
+        {
+            if(pButton->isChecked())
+            {
+                if(pButton == bottomline->lbutton)
+                {
+                    //centerline->setCurrentWidget(myself);
+                }
+                else if(pButton == bottomline->mbutton)
+                {
+                  //  centerline->setCurrentWidget(myfriends);
+                }
+                else if(pButton == bottomline->rbutton)
+                {
+                //    centerline->setCurrentWidget(myclub);
+                }
+
+            }
+
+        }
 
 }

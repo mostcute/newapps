@@ -10,14 +10,15 @@ flisttopline::flisttopline(QWidget *parent) : QWidget(parent)
     morebtn = new QPushButton(this);
     QString a;
 
-    morebtn->move(920,10);
+    morebtn->move(900,10);
     {
-        morebtn->setStyleSheet("QPushButton{border-image: url(assets:/pic/mainpic/more.png);}"
-                              "QPushButton:hover{border-image: url(assets:/pic/mainpic/more.png);}"
+        morebtn->setStyleSheet("QPushButton{border-image: url(assets:/pic/mainpic/more1.png);}"
+                              "QPushButton:hover{border-image: url(assets:/pic/mainpic/more1.png);}"
                               "QPushButton:pressed{border-image: url(assets:/pic/mainpic/more.png);}");
 
         morebtn->setFocusPolicy(Qt::NoFocus);
-        morebtn->setMinimumSize(QPixmap("assets:/pic/mainpic/more.png").width(),QPixmap("assets:/pic/mainpic/more.png").height());
+        morebtn->resize(QPixmap("assets:/pic/mainpic/more.png").width(),QPixmap("assets:/pic/mainpic/more.png").height());
+        //morebtn->setMinimumSize(QPixmap("assets:/pic/mainpic/more.png").width(),QPixmap("assets:/pic/mainpic/more.png").height());
     }
     a.append(QString::number(this->width()));
     a.append("and");

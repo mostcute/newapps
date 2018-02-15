@@ -35,7 +35,8 @@ SOURCES += \
     ScrollButton.cpp \
     nbasetoastr.cpp \
     flisttopline.cpp \
-    extrafont.cpp
+    extrafont.cpp \
+    flistbottomline.cpp
 
     testwidget.cpp
 
@@ -52,7 +53,8 @@ HEADERS += \
     nbasetoastr.h \
     nbaseuikit_global.h \
     flisttopline.h \
-    extrafont.h
+    extrafont.h \
+    flistbottomline.h
 
 
 

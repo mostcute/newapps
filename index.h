@@ -8,6 +8,9 @@
 #include <QListWidget>
 #include "friendlist.h"
 #include "flisttopline.h"
+#include "flistbottomline.h"
+#include "testwidget.h"
+#include <QStackedWidget>
 
 class index : public QWidget
 {
@@ -19,12 +22,16 @@ public:
 private:
     QVBoxLayout *wlayout;
     flisttopline *topline;
-    QWidget *bottomline;
-    QWidget *centerline;
+    flistbottomline *bottomline;
+    QStackedWidget *centerline;
     friendlist * myfriends;
+    testwidget * myself;
+    testwidget * myclub;
+
 
 signals:
-
+private slots:
+   void groupClicked();
 public slots:
 };
 

@@ -39,7 +39,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      //item->setText("zhangsan");
 
 
-     this->addItem("zhangsan");
+     //this->addItem("zhangsan");
 
      this->addItem(item);
      this->addItem(item1);
@@ -51,7 +51,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      this->setItemWidget(item2,frienditem2);
      this->setItemWidget(item3,frienditem3);
      this->setItemWidget(item4,frienditem4);
-     this->addItem("lisi");
+     //this->addItem("lisi");
 
      {
      QPalette pal1;
@@ -61,7 +61,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      }
      this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     // this->setViewportMargins(0,0,0,0);
-     this->setSpacing(0);
+     this->setSpacing(10);
 
 
      this->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
