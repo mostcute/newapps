@@ -25,6 +25,7 @@ void mainwindow::login_success_slot()
 
    //show_stackwidget(create_testwidget());
      show_stackwidget(create_indexview());
+     delete_loginwidget();
 
 
 }
@@ -41,6 +42,10 @@ QWidget  * mainwindow::create_loginwidget()
     loginview = new loginwidget;
     ViewStack->addWidget(loginview);
     return loginview;
+}
+void mainwindow::delete_loginwidget()
+{
+     delete loginview;
 }
 QWidget  * mainwindow::create_testwidget()
 {

@@ -31,6 +31,7 @@ private:
     index * indexview;
     void create_framework();
     QWidget  * create_loginwidget();
+    void delete_loginwidget();
     QWidget  * create_testwidget();
     QWidget  * create_indexview();
     void add_winlist(char* name,void* widget);
