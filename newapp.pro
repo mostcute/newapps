@@ -36,7 +36,8 @@ SOURCES += \
     nbasetoastr.cpp \
     flisttopline.cpp \
     extrafont.cpp \
-    flistbottomline.cpp
+    flistbottomline.cpp \
+    club.cpp
 
     testwidget.cpp
 
@@ -54,7 +55,8 @@ HEADERS += \
     nbaseuikit_global.h \
     flisttopline.h \
     extrafont.h \
-    flistbottomline.h
+    flistbottomline.h \
+    club.h
 
 
 

@@ -9,9 +9,9 @@ index::index(QWidget *parent) : QWidget(parent)
     topline = new flisttopline;
     bottomline = new flistbottomline;
     centerline = new QStackedWidget;
-    myfriends = new friendlist;
+    myfriends = new friendlist();
     myself = new testwidget;
-    myclub = new testwidget;
+    myclub = new club;
 
     centerline->addWidget(myfriends);
     centerline->addWidget(myself);
@@ -47,15 +47,15 @@ void index::groupClicked()
             {
                 if(pButton == bottomline->lbutton)
                 {
-                    //centerline->setCurrentWidget(myself);
+                    centerline->setCurrentWidget(myself);
                 }
                 else if(pButton == bottomline->mbutton)
                 {
-                  //  centerline->setCurrentWidget(myfriends);
+                    centerline->setCurrentWidget(myfriends);
                 }
                 else if(pButton == bottomline->rbutton)
                 {
-                //    centerline->setCurrentWidget(myclub);
+                    centerline->setCurrentWidget(myclub);
                 }
 
             }

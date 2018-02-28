@@ -51,7 +51,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      this->setItemWidget(item2,frienditem2);
      this->setItemWidget(item3,frienditem3);
      this->setItemWidget(item4,frienditem4);
-     //this->addItem("lisi");
+
 
      {
      QPalette pal1;
@@ -73,6 +73,11 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      bar = new MegaScrollBar(this);
      //this->setVerticalScrollBar(bar);
      bar->resize( 40, 30 ); // First arg - width of scroller
+      QString a ;
+      a.append(QString::number(this->height()));
+      a.append("x");
+      a.append(QString::number(this->width()));
+     this->addItem(a);
 
 }
 

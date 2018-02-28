@@ -10,6 +10,7 @@
 #include "flisttopline.h"
 #include "flistbottomline.h"
 #include "testwidget.h"
+#include "club.h"
 #include <QStackedWidget>
 
 class index : public QWidget
@@ -26,7 +27,7 @@ private:
     QStackedWidget *centerline;
     friendlist * myfriends;
     testwidget * myself;
-    testwidget * myclub;
+    club * myclub;
 
 
 signals:

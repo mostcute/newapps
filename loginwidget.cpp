@@ -26,7 +26,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      setPalette(pal);
      wlayout->addSpacing(250);
     // headphotolabel = new MaskLabel;
-     headphotolabel = new QLabel;
+     headphotolabel = new QLabel(this);
      headphotolabel->setFixedSize(254,254);
      headphotolabel->setPixmap(QPixmap("assets:/pic/headphoto2.png"));
      headphotolabel->setAttribute(Qt::WA_TranslucentBackground);//据说让背景透明
@@ -44,7 +44,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
 
      //wlayout->setAlignment(headphotolabel,Qt::AlignVCenter);
 
-     usrname = new QLineEdit;
+     usrname = new QLineEdit(this);
      usrname->setMaximumWidth(screensize.width()*3/4);
      usrname->setMinimumWidth(screensize.width()*2/3);
      usrname->setPlaceholderText(tr("username"));
@@ -59,7 +59,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
 
 
 
-     psd = new QLineEdit;
+     psd = new QLineEdit(this);
      psd->setMaximumWidth(screensize.width()*3/4);
      psd->setMinimumWidth(screensize.width()*2/3);
      psd->setPlaceholderText(tr("password"));
@@ -70,7 +70,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
 
     // wlayout->addSpacing(100);
     //  wlayout->setStretchFactor(psd,1);
-     loginbtn = new QPushButton;
+     loginbtn = new QPushButton(this);
      wlayout->addWidget(loginbtn,0,Qt::AlignHCenter);
      loginbtn->setStyleSheet("QPushButton{border-image: url(assets:/pic/login1.png);}"
                            "QPushButton:hover{border-image: url(assets:/pic/login1.png);}"
@@ -80,7 +80,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
 
    //  wlayout->setStretchFactor(loginbtn,2);
 
-     regstbtn = new QPushButton;
+     regstbtn = new QPushButton(this);
      wlayout->addWidget(regstbtn,0,Qt::AlignHCenter);
      regstbtn->setStyleSheet("QPushButton{border-image: url(assets:/pic/reg1.png);}"
                            "QPushButton:hover{border-image: url(assets:/pic/reg1.png);}"
@@ -91,7 +91,7 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
     // wlayout->setStretchFactor(regstbtn,4);
      wlayout->addSpacing(50);
 
-     flashphoto = new QLabel;
+     flashphoto = new QLabel(this);
      flashphoto->setPixmap(QPixmap("assets:/pic/elec.png"));
      flashphoto->setFixedSize(QPixmap("assets:/pic/elec.png").width(),QPixmap("assets:/pic/elec.png").height());
    //  flashphoto

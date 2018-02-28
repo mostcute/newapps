@@ -9,6 +9,7 @@ flistbottomline::flistbottomline(QWidget *parent) : QWidget(parent)
     //QPixmap pixmap("I:/qtandgit/newapp/android/android/assets/pic/background.jpg");
     pal1.setBrush(QPalette::Window,QBrush(pixmap1));
     this->setPalette(pal1);
+    this->setMaximumHeight(160);
 
     lbutton = new QRadioButton;
     mbutton = new QRadioButton;
