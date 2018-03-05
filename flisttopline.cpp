@@ -55,9 +55,7 @@ flisttopline::flisttopline(QWidget *parent) : QWidget(parent)
     //ft.setFamily(ft.defaultFamily());
     ft.setPointSize(30);
     moremenu->setFont(ft);
-    //moremenu->setStyleSheet("QMenu::item{ padding:100px;}");
-    //moremenu->setStyleSheet("{ font: 20px; }");
-   // MoreAction->setStyleSheet("{background-image: url(assets:/pic/mainpic/moremenu.png);}");
+
 
     moremenu->addAction(MoreAction);
     morebtn->setMenu(moremenu);
@@ -69,4 +67,6 @@ flisttopline::flisttopline(QWidget *parent) : QWidget(parent)
    //wlayout->addWidget(topline,0,Qt::AlignHCenter);//居中显示
     this->setMaximumHeight(150);
     this->setMinimumHeight(150);
+    connect(MoreAction, SIGNAL(triggered()),this, SIGNAL(addfriend()));
+
 }

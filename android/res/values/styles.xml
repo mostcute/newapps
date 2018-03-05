@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <style name="MyAppTheme">
+
+      <item name="android:windowBackground">@drawable/welcome_bg</item>
+      <item name="android:windowNoTitle">true</item>
+      <!-- 上面这种是设置一个启动画面logo下面这种是把启动画面变透明-->
+    <!--    <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
+        <item name="android:windowFullscreen">true</item>
+        -->
+
+        <!--
+        <item name="android:windowBackground">@drawable/splash</item>
+        -->
+    </style>
+</resources>
+

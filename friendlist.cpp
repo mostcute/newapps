@@ -3,14 +3,27 @@
 #include <QPixmap>
 #include <QScrollBar>
 #include "nbasetoastr.h"
+#include "fitem.h"
+extern QSize screensize;
+extern QSize screensize_2;
 friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
 {    isMoved = false;
-     frienditem = new QWidget;
+    /* frienditem = new QWidget;
      frienditem1 = new QWidget;
      frienditem2 = new QWidget;
      frienditem3 = new QWidget;
-     frienditem4 = new QWidget;
-     {
+     frienditem4 = new QWidget;*/
+     fitem *itemnew = new fitem(0,this);
+     fitem *itemnew1 = new fitem(0,this);
+     fitem *itemnew2 = new fitem(0,this);
+     fitem *itemnew3 = new fitem(0,this);
+     fitem *itemnew4 = new fitem(0,this);
+      QString a ;
+      a.append(QString::number(screensize_2.height()));
+      a.append("x");
+      a.append(QString::number(screensize.height()));
+     this->addItem(a);
+     /*{
      QPalette pal1;
      QPixmap pixmap1("assets:/pic/mainpic/person.png");
      pal1.setBrush(QPalette::Window,QBrush(pixmap1));
@@ -19,7 +32,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      frienditem2->setPalette(pal1);
      frienditem3->setPalette(pal1);
      frienditem4->setPalette(pal1);
-     }
+     }*/
 
      QListWidgetItem *item = new QListWidgetItem;
      QListWidgetItem *item1 = new QListWidgetItem;
@@ -27,9 +40,10 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      QListWidgetItem *item3 = new QListWidgetItem;
      QListWidgetItem *item4 = new QListWidgetItem;
      item->setText("111");
+
      item4->setText("222");
      QSize itemsize = item->sizeHint();
-     itemsize.setHeight(700);
+     itemsize.setHeight(450);
 
      item->setSizeHint(itemsize);
      item1->setSizeHint(itemsize);
@@ -46,11 +60,11 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      this->addItem(item2);
      this->addItem(item3);
      this->addItem(item4);
-     this->setItemWidget(item,frienditem);
-     this->setItemWidget(item1,frienditem1);
-     this->setItemWidget(item2,frienditem2);
-     this->setItemWidget(item3,frienditem3);
-     this->setItemWidget(item4,frienditem4);
+     this->setItemWidget(item,itemnew);
+     this->setItemWidget(item1,itemnew1);
+     this->setItemWidget(item2,itemnew2);
+     this->setItemWidget(item3,itemnew3);
+     this->setItemWidget(item4,itemnew4);
 
 
      {
@@ -73,11 +87,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      bar = new MegaScrollBar(this);
      //this->setVerticalScrollBar(bar);
      bar->resize( 40, 30 ); // First arg - width of scroller
-      QString a ;
-      a.append(QString::number(this->height()));
-      a.append("x");
-      a.append(QString::number(this->width()));
-     this->addItem(a);
+
 
 }
 

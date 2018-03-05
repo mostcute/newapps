@@ -37,9 +37,10 @@ SOURCES += \
     flisttopline.cpp \
     extrafont.cpp \
     flistbottomline.cpp \
-    club.cpp
-
-    testwidget.cpp
+    club.cpp \
+    newfriendwidget.cpp \
+    fitem.cpp \
+    statusbar.cpp
 
 
 HEADERS += \
@@ -56,7 +57,10 @@ HEADERS += \
     flisttopline.h \
     extrafont.h \
     flistbottomline.h \
-    club.h
+    club.h \
+    newfriendwidget.h \
+    fitem.h \
+    statusbar.h
 
 
 
@@ -72,7 +76,9 @@ DISTFILES += \
     android/res/values/libs.xml \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew.bat
+    android/gradlew.bat \
+    android/res/values/styles.xml \
+    android/src/an/qt/newactivity/Statusbar.java
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 

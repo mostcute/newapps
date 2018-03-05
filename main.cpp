@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     screen = a.primaryScreen();
     screensize = screen->availableSize();
     screensize_2 = screen->size();
+
     QString strFont =  loadFontFamilyFromFiles("assets:/font/msyhl.ttc");
     if(!strFont.isEmpty())
     {
@@ -27,6 +28,7 @@ int main(int argc, char *argv[])
     }
 
     mainwindow w;
+    a.installEventFilter(&w);
     w.show();
 
 

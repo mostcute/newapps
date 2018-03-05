@@ -8,6 +8,7 @@
 #include "testwidget.h"
 
 #include "index.h"
+#include "newfriendwidget.h"
 
 #include <QVBoxLayout>
 #include <QList>
@@ -21,14 +22,19 @@ public:
     mainwindow(QWidget *parent = 0);
     ~mainwindow();
     QList<struct window_com> win_list;
+    QList<QWidget *>last_widget;
     void show_stackwidget(QWidget  *widget);
+    void show_lastwidget();
 
+protected:
+    bool eventFilter(QObject *watched, QEvent *event);
 private:
     QStackedWidget *ViewStack;
     loginwidget *loginview;
     testwidget *testview;
     QVBoxLayout *mainlayout;
     index * indexview;
+    newfriendwidget * newfriend;
     void create_framework();
     QWidget  * create_loginwidget();
     void delete_loginwidget();
@@ -38,6 +44,7 @@ private:
 
 public slots:
     void login_success_slot();
+    void add_friend_slot();
 };
 
 #endif // MAINWINDOW_H

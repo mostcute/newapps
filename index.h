@@ -12,6 +12,7 @@
 #include "testwidget.h"
 #include "club.h"
 #include <QStackedWidget>
+#include "statusbar.h"
 
 class index : public QWidget
 {
@@ -19,15 +20,16 @@ class index : public QWidget
 public:
     explicit index(QWidget *parent = nullptr);
     ~index();
-
+    flisttopline *topline;
 private:
     QVBoxLayout *wlayout;
-    flisttopline *topline;
+
     flistbottomline *bottomline;
     QStackedWidget *centerline;
     friendlist * myfriends;
     testwidget * myself;
     club * myclub;
+    statusbar *sta;
 
 
 signals:

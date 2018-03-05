@@ -15,6 +15,7 @@ class friendlist : public QListWidget
     Q_OBJECT
 public:
     explicit friendlist(QListWidget *parent = nullptr);
+
     QWidget *frienditem;
     QWidget *frienditem1;
     QWidget *frienditem2;

@@ -15,6 +15,7 @@ public:
     QAction * MoreAction;
 
 signals:
+    void addfriend();
 
 public slots:
 };
