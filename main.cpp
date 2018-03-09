@@ -5,6 +5,7 @@
 #include <QSize>
 #include "extrafont.h"
 #include <QFont>
+#include<QFontDatabase>
 QScreen *screen ;
 QSize screensize;
 QSize screensize_2;
@@ -15,8 +16,12 @@ int main(int argc, char *argv[])
     screen = a.primaryScreen();
     screensize = screen->availableSize();
     screensize_2 = screen->size();
-
-    QString strFont =  loadFontFamilyFromFiles("assets:/font/msyhl.ttc");
+    //DroidSansFallback.ttf//旧字体
+   /* int fontId = QFontDatabase::addApplicationFont("/system/fonts/DroidSansFallback.ttf");
+    QString msyh = QFontDatabase::applicationFontFamilies ( fontId ).at(0);
+    QFont font(msyh,20);
+    a.setFont(font);*/
+    QString strFont =  loadFontFamilyFromFiles("assets:/font/msyhl.ttc");//assets:/font/msyhl.ttc
     if(!strFont.isEmpty())
     {
        // qDebug() <<"Error";
