@@ -37,6 +37,7 @@ private:
 signals:
 
 public slots:
+    void save_slot();
 };
 
 #endif // NEWFRIENDWIDGET_H

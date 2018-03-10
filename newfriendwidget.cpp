@@ -106,10 +106,13 @@ newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
 
     wlayout->addWidget(save,0,Qt::AlignHCenter);
 
-
     wlayout->addStretch(5);
 
+}
 
-
+void newfriendwidget::save_slot()
+{
+    //QFile jsfile("myjs");
+    //jsfile.open(QIODevice::WriteOnly);
 
 }

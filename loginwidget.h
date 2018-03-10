@@ -9,7 +9,8 @@
 #include <QGridLayout>
 #include "masklabel.h"
 #include <QObject>
-
+#include "newapptcpclient.h"
+#include "networkdebughelper.h"
 
 
 class loginwidget : public QWidget
@@ -28,12 +29,15 @@ private:
     QPushButton * loginbtn;
     QPushButton * regstbtn;
     QLabel *flashphoto;
+    newapptcpclient *loginclient;
+    networkdebughelper *networkdebug;
 
 signals:
     void login_success();
 
 public slots:
     void login_slot();
+    void login_result(int result);
 
     void register_slot();
 

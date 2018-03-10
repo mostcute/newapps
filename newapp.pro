@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += network
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -40,7 +42,10 @@ SOURCES += \
     club.cpp \
     newfriendwidget.cpp \
     fitem.cpp \
-    statusbar.cpp
+    statusbar.cpp \
+    dataprocess.cpp \
+    newapptcpclient.cpp \
+    networkdebughelper.cpp
 
 
 HEADERS += \
@@ -60,7 +65,10 @@ HEADERS += \
     club.h \
     newfriendwidget.h \
     fitem.h \
-    statusbar.h
+    statusbar.h \
+    dataprocess.h \
+    newapptcpclient.h \
+    networkdebughelper.h
 
 
 

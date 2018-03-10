@@ -28,7 +28,7 @@ void mainwindow::login_success_slot()
    //show_stackwidget(create_testwidget());
      //show_stackwidget(create_indexview());
     ViewStack->setCurrentWidget(create_indexview());
-     delete_loginwidget();
+    delete_loginwidget();
 
 
 }

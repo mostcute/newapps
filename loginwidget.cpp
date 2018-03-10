@@ -8,6 +8,7 @@
 
 
 
+
 extern QSize screensize;
 extern QSize screensize_2;
 loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
@@ -105,7 +106,13 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      connect(regstbtn, SIGNAL(clicked(bool)), this, SLOT(register_slot()));
 
      this->setLayout(wlayout);
-
+     loginclient = new newapptcpclient;
+     loginclient->IPCONFIG("123.207.182.40",10000);
+     loginclient->newConnect();
+     connect(loginclient, SIGNAL(login_result(int)), this, SLOT(login_result(int)));
+     networkdebug = new networkdebughelper();
+     networkdebug->IPCONFIG("123.207.182.40",10010);
+     networkdebug->newConnect();
 
 }
 
@@ -113,16 +120,40 @@ loginwidget::~loginwidget()
 {
     delete wlayout;
     delete testlabel;
+    delete networkdebug;
+    loginclient->deleteLater();
 }
 
-void loginwidget::login_slot()
+void loginwidget::login_slot()//处理登录事件
 {
-    emit login_success();
+
+    loginclient->login(usrname->text(),psd->text());
+
+    networkdebug->sendMessage("im login");
+}
+
+void loginwidget::login_result(int result)
+{
+     if(result == 1)
+     {
+         emit login_success();
+     }
+     else if(result == 2)
+     {
+        QMessageBox::warning(this, tr("警告！"),tr("用户名错误！"),QMessageBox::Yes);
+
+     }
+     else
+     {
+        QMessageBox::warning(this, tr("警告！"),tr("密码错误！"),QMessageBox::Yes);
+
+     }
+
 }
 
 void loginwidget::register_slot()
 {
-    QMessageBox::warning(this, tr("警告！"),tr("用户名或密码错误！"),QMessageBox::Yes);
+
 
 
 }
