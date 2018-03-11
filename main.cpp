@@ -9,6 +9,7 @@
 QScreen *screen ;
 QSize screensize;
 QSize screensize_2;
+QString global_userID;
 
 int main(int argc, char *argv[])
 {

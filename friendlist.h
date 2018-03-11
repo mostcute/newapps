@@ -9,18 +9,15 @@
 #include <QListWidget>
 #include <QMouseEvent>
 #include "MegaScrollBar.h"
+#include "networkdebughelper.h"
 
 class friendlist : public QListWidget
 {
     Q_OBJECT
 public:
-    explicit friendlist(QListWidget *parent = nullptr);
+    explicit friendlist(QWidget *parent = nullptr);
 
-    QWidget *frienditem;
-    QWidget *frienditem1;
-    QWidget *frienditem2;
-    QWidget *frienditem3;
-    QWidget *frienditem4;
+
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -31,10 +28,14 @@ private:
     int originPosX;
     bool isMoved;
     MegaScrollBar *bar;
+    networkdebughelper *networkdebug;
+
 
 signals:
 
 public slots:
+    void refresh_items();
+
 };
 
 #endif // FRIENDLIST_H

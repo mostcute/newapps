@@ -2,12 +2,14 @@
 #define NEWFRIENDWIDGET_H
 
 #include <QWidget>
+#include <QFileInfo>
 class QVBoxLayout;
 class QLabel;
 class QPushButton;
 class QLineEdit;
 class QTextEdit;
 class QRadioButton;
+class QButtonGroup;
 
 class newfriendwidget : public QWidget
 {
@@ -29,15 +31,19 @@ private:
     QLineEdit *account;
     QLineEdit *email;
     QLineEdit *job;
+    QButtonGroup *group;
     QRadioButton *genderboy;
     QRadioButton *gendergirl;
 
 
 
 signals:
+    void save_finish();
 
 public slots:
     void save_slot();
+    void button_checked();
+
 };
 
 #endif // NEWFRIENDWIDGET_H

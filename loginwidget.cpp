@@ -112,9 +112,9 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      loginclient->IPCONFIG("123.207.182.40",10000);
      loginclient->newConnect();
      connect(loginclient, SIGNAL(login_result(int)), this, SLOT(login_result(int)));
-     networkdebug = new networkdebughelper();
+    /* networkdebug = new networkdebughelper();
      networkdebug->IPCONFIG("123.207.182.40",10010);
-     networkdebug->newConnect();
+     networkdebug->newConnect();*/
 
 }
 
@@ -163,16 +163,6 @@ void loginwidget::login_slot()//处理登录事件
 
     loginclient->login(usrname->text(),psd->text());
 
-    QString debg("start");
-    QFileInfoList file_info_list = GetFileDir("/data/data/com.myapp.test");
-    foreach(QFileInfo fileinfo, file_info_list)
-    {
-         debg.append(fileinfo.absoluteFilePath());
-         debg.append("\n");
-    }
-     debg.append("finish");
-     networkdebug->sendMessage(debg);
-
 
 }
 
@@ -189,8 +179,7 @@ void loginwidget::login_result(int result)
          if(!tempdir.exists(path))
           {
           //qDebug()<<"系统路径不存在，自动创建"<<endl;
-             QString debg("auto create");
-             networkdebug->sendMessage(debg);
+
           tempdir.mkpath(path);
           }
          emit login_success(usrname->text());

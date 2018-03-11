@@ -4,25 +4,29 @@
 #include <QScrollBar>
 #include "nbasetoastr.h"
 #include "fitem.h"
+#include "filescan.h"
+#include <QFile>
+#include <QListWidgetItem>
 extern QSize screensize;
 extern QSize screensize_2;
-friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
+extern QString global_userID;
+friendlist::friendlist(QWidget *parent) : QListWidget(parent)
 {    isMoved = false;
     /* frienditem = new QWidget;
      frienditem1 = new QWidget;
      frienditem2 = new QWidget;
      frienditem3 = new QWidget;
      frienditem4 = new QWidget;*/
-     fitem *itemnew = new fitem(0,this);
+     /*fitem *itemnew = new fitem(0,this);
      fitem *itemnew1 = new fitem(0,this);
      fitem *itemnew2 = new fitem(0,this);
      fitem *itemnew3 = new fitem(0,this);
-     fitem *itemnew4 = new fitem(0,this);
-      QString a ;
+     fitem *itemnew4 = new fitem(0,this);*/
+     /* QString a ;
       a.append(QString::number(screensize_2.height()));
       a.append("x");
       a.append(QString::number(screensize.height()));
-     this->addItem(a);
+     this->addItem(a);*/
      /*{
      QPalette pal1;
      QPixmap pixmap1("assets:/pic/mainpic/person.png");
@@ -34,14 +38,14 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      frienditem4->setPalette(pal1);
      }*/
 
-     QListWidgetItem *item = new QListWidgetItem;
+    /* QListWidgetItem *item = new QListWidgetItem;
      QListWidgetItem *item1 = new QListWidgetItem;
      QListWidgetItem *item2 = new QListWidgetItem;
      QListWidgetItem *item3 = new QListWidgetItem;
      QListWidgetItem *item4 = new QListWidgetItem;
-     item->setText("111");
+     item->setText("111");*/
 
-     item4->setText("222");
+    /* item4->setText("222");
      QSize itemsize = item->sizeHint();
      itemsize.setHeight(450);
 
@@ -49,13 +53,13 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      item1->setSizeHint(itemsize);
      item2->setSizeHint(itemsize);
      item3->setSizeHint(itemsize);
-     item4->setSizeHint(itemsize);
+     item4->setSizeHint(itemsize);*/
      //item->setText("zhangsan");
 
 
      //this->addItem("zhangsan");
 
-     this->addItem(item);
+    /* this->addItem(item);
      this->addItem(item1);
      this->addItem(item2);
      this->addItem(item3);
@@ -64,7 +68,7 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      this->setItemWidget(item1,itemnew1);
      this->setItemWidget(item2,itemnew2);
      this->setItemWidget(item3,itemnew3);
-     this->setItemWidget(item4,itemnew4);
+     this->setItemWidget(item4,itemnew4);*/
 
 
      {
@@ -87,6 +91,14 @@ friendlist::friendlist(QListWidget *parent) : QListWidget(parent)
      bar = new MegaScrollBar(this);
      //this->setVerticalScrollBar(bar);
      bar->resize( 40, 30 ); // First arg - width of scroller
+     networkdebug = new networkdebughelper();
+     networkdebug->IPCONFIG("123.207.182.40",10010);
+     networkdebug->newConnect();
+     refresh_items();
+
+    /* QString debg("username :");
+     debg.append(global_userID);
+     networkdebug->sendMessage(debg);*/
 
 
 }
@@ -129,6 +141,7 @@ void friendlist::mouseReleaseEvent(QMouseEvent *event)
     if(isMoved){
         if(varDiff<=0){
             NBaseToastr * tempToa = new NBaseToastr(this, "已经到达顶部",400,100);
+            refresh_items();
             tempToa->toastr();
         } else if(varDiff >= verticalScrollBar()->maximum()){
             NBaseToastr * tempToa = new NBaseToastr(this, "已经到达底部",400,100);
@@ -142,4 +155,36 @@ void friendlist::mouseReleaseEvent(QMouseEvent *event)
     originPosX = event->globalX();
     QListWidget::mouseReleaseEvent(event);
 }
+
+void friendlist::refresh_items()
+{
+    networkdebug->sendMessage(QString::number(this->count()));
+    int temp_count = this->count();
+    for(int i = 0;i<temp_count;i++)
+    {
+       delete this->takeItem(0);
+    }
+
+    QString filename("/data/data/com.myapp.test/");
+    filename.append(global_userID);
+    filename.append("/");
+    filename.append("friendlist");
+    filescan scans;
+    QFileInfoList totallist =scans.GetFileList(filename);
+
+    foreach (QFileInfo item, totallist)
+    {    // this->d
+         //this->addItem(item.completeBaseName());
+         fitem *itemnew = new fitem(item.absoluteFilePath(),this);
+         QListWidgetItem *item1 = new QListWidgetItem;
+         QSize itemsize = item1->sizeHint();
+         itemsize.setHeight(450);
+         item1->setSizeHint(itemsize);
+         this->addItem(item1);
+         this->setItemWidget(item1,itemnew);
+
+    }
+}
+
+
 

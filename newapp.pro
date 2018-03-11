@@ -45,7 +45,8 @@ SOURCES += \
     statusbar.cpp \
     dataprocess.cpp \
     newapptcpclient.cpp \
-    networkdebughelper.cpp
+    networkdebughelper.cpp \
+    filescan.cpp
 
 
 HEADERS += \
@@ -68,7 +69,8 @@ HEADERS += \
     statusbar.h \
     dataprocess.h \
     newapptcpclient.h \
-    networkdebughelper.h
+    networkdebughelper.h \
+    filescan.h
 
 
 

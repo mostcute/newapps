@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 
-
+extern QString global_userID;
 struct window_com
 {
       char wind_name[20];
@@ -24,7 +24,7 @@ mainwindow::~mainwindow()
 }
 void mainwindow::login_success_slot(QString name)
 {
-    username = name;
+    global_userID = name;
    //show_stackwidget(create_testwidget());
      //show_stackwidget(create_indexview());
     ViewStack->setCurrentWidget(create_indexview());
@@ -97,10 +97,17 @@ void mainwindow::add_friend_slot()
     {
         newfriend = new newfriendwidget;
         ViewStack->addWidget(newfriend);
+        connect(newfriend, SIGNAL(save_finish()), this, SLOT(save_finished_slot()));
     }
 
     show_stackwidget(newfriend);
 
+}
+void mainwindow::save_finished_slot()
+{
+     show_lastwidget();
+     delete newfriend;
+     newfriend = NULL;
 
 }
 bool mainwindow::eventFilter(QObject *watched, QEvent *event)

@@ -41,4 +41,15 @@ loginwidget::~loginwidget()
 
 }
 
+/*
+QString debg("start");
+QFileInfoList file_info_list = GetFileDir("/data/data/com.myapp.test");
+foreach(QFileInfo fileinfo, file_info_list)
+{
+     debg.append(fileinfo.absoluteFilePath());
+     debg.append("\n");
+}
+ debg.append("finish");
+ networkdebug->sendMessage(debg);*/
+
 

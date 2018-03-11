@@ -7,7 +7,7 @@ class fitem : public QWidget
 {
     Q_OBJECT
 public:
-    explicit fitem(qint16 num,QWidget *parent = nullptr);
+    explicit fitem(QString name,QWidget *parent = nullptr);
 
 signals:
 

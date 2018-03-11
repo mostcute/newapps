@@ -10,7 +10,7 @@ index::index(QWidget *parent) : QWidget(parent)
     topline = new flisttopline(this);
     bottomline = new flistbottomline(this);
     centerline = new QStackedWidget(this);
-    myfriends = new friendlist();
+    myfriends = new friendlist(this);
     myself = new testwidget(this);
     myclub = new club(this);
     sta = new statusbar(this);

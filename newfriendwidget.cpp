@@ -6,8 +6,16 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QRadioButton>
+#include <QButtonGroup>
 #include <QHBoxLayout>
 #include "statusbar.h"
+#include "filescan.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QFile>
+#include <QDir>
+extern QString global_userID;
 newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
 {
 
@@ -52,7 +60,8 @@ newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
     QHBoxLayout *hlayout1 = new QHBoxLayout(this);
     vlayout1->addWidget(name);
     vlayout1->addLayout(hlayout1);
-
+    group = new QButtonGroup(this);
+    group->setExclusive(true);
     genderboy = new QRadioButton(this);
     gendergirl = new QRadioButton(this);
     genderboy->setText("男");
@@ -62,6 +71,14 @@ newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
     genderboy->setStyleSheet("background-color:rgb(250,250,250);");
     hlayout1->addWidget(genderboy);
     hlayout1->addWidget(gendergirl);
+
+    group->addButton(genderboy);
+    group->addButton(gendergirl);
+    genderboy->setFocusPolicy(Qt::NoFocus);//去除焦点框
+    gendergirl->setFocusPolicy(Qt::NoFocus);//去除焦点框
+    genderboy->setChecked(true);
+    connect(group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(button_checked()));
+
 
     hlayout->addLayout(vlayout1);
     hlayout->addSpacing(20);
@@ -103,16 +120,85 @@ newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
                           "QPushButton:pressed{border-image: url(assets:/pic/mainpic/save.png);}");
     save->setFocusPolicy(Qt::NoFocus);//去除焦点框
     save->setMinimumSize(QPixmap("assets:/pic/mainpic/save.png").width(),QPixmap("assets:/pic/mainpic/save.png").height());
+     connect(save, SIGNAL(clicked(bool)), this, SLOT(save_slot()));
 
     wlayout->addWidget(save,0,Qt::AlignHCenter);
 
     wlayout->addStretch(5);
 
 }
-
-void newfriendwidget::save_slot()
+void newfriendwidget::button_checked()
 {
-    //QFile jsfile("myjs");
-    //jsfile.open(QIODevice::WriteOnly);
+    QList<QAbstractButton*> list = group->buttons();
+        foreach (QAbstractButton *pButton, list)
+        {
+            if(pButton->isChecked())
+            {
+                if(pButton ==genderboy)
+                {
+                      photo->setPixmap(QPixmap("assets:/pic/mainpic/boy.PNG"));
+                }
+                else if(pButton == gendergirl)
+                {
+                      photo->setPixmap(QPixmap("assets:/pic/mainpic/girl.PNG"));
+                }
+
+            }
+
+        }
 
 }
+//data/data/apkname/username/friendlist/num.
+void newfriendwidget::save_slot()
+{
+    QString filename("/data/data/com.myapp.test/");
+    filename.append(global_userID);
+    filename.append("/");
+    filename.append("friendlist");
+    filescan scans;
+    QFileInfoList totallist =scans.GetFileList(filename);
+    filename.append("/");
+    filename.append(QString::number(totallist.length()+1));
+    filename.append(".js");
+
+    QFile jsfile(filename);
+    jsfile.open(QIODevice::WriteOnly);
+
+    QJsonDocument document;
+    QJsonObject json;
+        json.insert("name",name->text());
+        json.insert("phone", phone->text());
+        json.insert("company",company->text());
+        json.insert("relation",company->text());
+        json.insert("birthday",company->text());
+        json.insert("account",company->text());
+        json.insert("email",company->text());
+        json.insert("job",company->text());
+        json.insert("firstimage",firstimage->toPlainText());
+
+        QList<QAbstractButton*> list = group->buttons();
+            foreach (QAbstractButton *pButton, list)
+            {
+                if(pButton->isChecked())
+                {
+                    if(pButton ==genderboy)
+                    {
+                        json.insert("gender","boy");
+                    }
+                    else if(pButton == gendergirl)
+                    {
+                       json.insert("gender","girl");
+                    }
+                }
+            }
+
+    document.setObject(json);
+    QByteArray byte_array = document.toJson(QJsonDocument::Compact);
+
+    jsfile.write(byte_array);        // write to jsfile
+    jsfile.close();
+    emit save_finish();
+
+}
+
+

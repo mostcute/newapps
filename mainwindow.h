@@ -44,8 +44,9 @@ private:
     void add_winlist(char* name,void* widget);
 
 public slots:
-    void login_success_slot();
+    void login_success_slot(QString name);
     void add_friend_slot();
+    void save_finished_slot();
 };
 
 #endif // MAINWINDOW_H
