@@ -23,6 +23,7 @@ fitem::fitem(qint16 num,QWidget *parent) : QWidget(parent)
     QVBoxLayout *layoutl = new QVBoxLayout(this);
     QVBoxLayout *layoutr = new QVBoxLayout(this);
 
+
     itemname->setText("罗天翔");
     itemname->setMaximumHeight(100);
     //让QLabel自适应text的大小，直接用下面的代码：

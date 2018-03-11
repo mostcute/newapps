@@ -13,7 +13,7 @@ mainwindow::mainwindow(QWidget *parent)
 
     create_framework();//构建框架
     show_stackwidget(create_loginwidget());
-    connect(loginview, SIGNAL(login_success()), this, SLOT(login_success_slot()));
+    connect(loginview, SIGNAL(login_success(QString)), this, SLOT(login_success_slot(QString)));
 
 
 }
@@ -22,9 +22,9 @@ mainwindow::~mainwindow()
 {
 
 }
-void mainwindow::login_success_slot()
+void mainwindow::login_success_slot(QString name)
 {
-
+    username = name;
    //show_stackwidget(create_testwidget());
      //show_stackwidget(create_indexview());
     ViewStack->setCurrentWidget(create_indexview());
@@ -60,7 +60,7 @@ QWidget  * mainwindow::create_testwidget()
 }
 QWidget  * mainwindow::create_indexview()
 {
-    indexview = new index;
+    indexview = new index(this);
     ViewStack->addWidget(indexview);
     connect(indexview->topline,SIGNAL(addfriend()),this, SLOT(add_friend_slot()));
     return indexview;

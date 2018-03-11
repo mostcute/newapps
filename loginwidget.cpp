@@ -31,6 +31,8 @@ loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
      headphotolabel->setFixedSize(254,254);
      headphotolabel->setPixmap(QPixmap("assets:/pic/headphoto2.png"));
      headphotolabel->setAttribute(Qt::WA_TranslucentBackground);//据说让背景透明
+    // headphotolabel->setFrameShape(0);
+     //headphotolabel->setFrameShadow(QFrame::Raised);
      wlayout->addWidget(headphotolabel,0,Qt::AlignHCenter);//居中显示
      //headphotolabel->setPixmap(QPixmap("I:/qtandgit/newapp/android/android/assets/pic/headphoto.png"));
 
@@ -123,20 +125,75 @@ loginwidget::~loginwidget()
     delete networkdebug;
     loginclient->deleteLater();
 }
+//data/data/apkname/username/friendlist/num.
+//递归遍历文件夹
+QFileInfoList loginwidget::GetFileList(QString path)
+{
+    QDir dir(path);
 
+    //列出dir(path)目录文件下所有文件和目录信息，存储到file_list容器
+    QFileInfoList file_list = dir.entryInfoList(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    //列出dir(path)目录下所有子文件夹
+    QFileInfoList folder_list = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+    //进行子文件夹folder_list递归遍历，将内容存入file_list容器
+    for(int i= 0; i != folder_list.size(); i++)
+    {
+        QString name = folder_list.at(i).absoluteFilePath();
+        QFileInfoList child_file_list = GetFileList(name);
+        file_list.append(child_file_list);
+    }
+    return file_list;
+}
+QFileInfoList loginwidget::GetFileDir(QString path)
+{
+    QDir dir(path);
+    //列出dir(path)目录下所有子文件夹
+    QFileInfoList folder_list = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+    //进行子文件夹folder_list递归遍历，将内容存入file_list容器
+    for(int i= 0; i != folder_list.size(); i++)
+    {
+        QString name = folder_list.at(i).absoluteFilePath();
+        QFileInfoList child_file_list = GetFileDir(name);
+        folder_list.append(child_file_list);
+    }
+    return folder_list;
+}
 void loginwidget::login_slot()//处理登录事件
 {
 
     loginclient->login(usrname->text(),psd->text());
 
-    networkdebug->sendMessage("im login");
+    QString debg("start");
+    QFileInfoList file_info_list = GetFileDir("/data/data/com.myapp.test");
+    foreach(QFileInfo fileinfo, file_info_list)
+    {
+         debg.append(fileinfo.absoluteFilePath());
+         debg.append("\n");
+    }
+     debg.append("finish");
+     networkdebug->sendMessage(debg);
+
+
 }
 
 void loginwidget::login_result(int result)
 {
      if(result == 1)
      {
-         emit login_success();
+         QString path("/data/data/com.myapp.test/");
+         path.append(usrname->text());
+         path.append("/");
+         path.append("friendlist");
+
+         QDir tempdir;
+         if(!tempdir.exists(path))
+          {
+          //qDebug()<<"系统路径不存在，自动创建"<<endl;
+             QString debg("auto create");
+             networkdebug->sendMessage(debg);
+          tempdir.mkpath(path);
+          }
+         emit login_success(usrname->text());
      }
      else if(result == 2)
      {

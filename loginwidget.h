@@ -33,12 +33,13 @@ private:
     networkdebughelper *networkdebug;
 
 signals:
-    void login_success();
+    void login_success(QString name);
 
 public slots:
     void login_slot();
     void login_result(int result);
-
+    QFileInfoList GetFileList(QString path);
+    QFileInfoList GetFileDir(QString path);
     void register_slot();
 
 };

@@ -25,6 +25,7 @@ public:
     QList<QWidget *>last_widget;
     void show_stackwidget(QWidget  *widget);
     void show_lastwidget();
+    QString username;
 
 protected:
     bool eventFilter(QObject *watched, QEvent *event);
