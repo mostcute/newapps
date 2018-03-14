@@ -13,7 +13,6 @@ extern QSize screensize;
 extern QSize screensize_2;
 loginwidget::loginwidget(QWidget *parent) : QWidget(parent)
 {
-
      wlayout = new QVBoxLayout;
 
 

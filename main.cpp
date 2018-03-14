@@ -6,6 +6,7 @@
 #include "extrafont.h"
 #include <QFont>
 #include<QFontDatabase>
+#include "qDebug2Logcat.h"
 QScreen *screen ;
 QSize screensize;
 QSize screensize_2;
@@ -13,6 +14,7 @@ QString global_userID;
 
 int main(int argc, char *argv[])
 {
+    installLogcatMessageHandler("yourLogTag");
     QApplication a(argc, argv);
     screen = a.primaryScreen();
     screensize = screen->availableSize();
@@ -36,6 +38,7 @@ int main(int argc, char *argv[])
     mainwindow w;
     a.installEventFilter(&w);
     w.show();
+    qDebug() <<"EVERY THIng oK";
 
 
     return a.exec();

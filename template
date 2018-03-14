@@ -52,4 +52,10 @@ foreach(QFileInfo fileinfo, file_info_list)
  debg.append("finish");
  networkdebug->sendMessage(debg);*/
 
+/*
+ACCESS ID 2100278689
+ACCESS KEY AG1C184CBX5E
+SECRET KEY 2347e5bf88a0beca8ca0c526a521cdcf
+*/
+
 
