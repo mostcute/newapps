@@ -15,6 +15,13 @@ import android.view.View;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.graphics.Color;
+import org.qtproject.qt5.android.bindings.QtActivity;
+import android.os.Bundle;
+import android.util.Log;
+import com.tencent.android.tpush.XGIOperateCallback;
+import com.tencent.android.tpush.XGPushConfig;
+import com.tencent.android.tpush.XGPushManager;
+
 
 /*public class Statusbar extends org.qtproject.qt5.android.bindings.QtActivity
 {
@@ -61,6 +68,20 @@ public class Statusbar extends org.qtproject.qt5.android.bindings.QtActivity
               getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
               getWindow().setStatusBarColor(Color.TRANSPARENT);//Color.TRANSPARENT
               getWindow().getDecorView().setFitsSystemWindows(true);
+
+              Context ctx = getApplicationContext();
+                     XGPushManager.registerPush(ctx, new XGIOperateCallback() {
+                         @Override
+                         public void onSuccess(Object o, int i) {
+                             Log.e(TAG, "register ok, token - " + o);
+                         }
+
+                         @Override
+                         public void onFail(Object o, int i, String s) {
+                             Log.e(TAG, "register failed, code - " + i + " message - " + s);
+                         }
+                     });
+
 
     }
 }

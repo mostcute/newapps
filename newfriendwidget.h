@@ -31,6 +31,7 @@ private:
     QLineEdit *account;
     QLineEdit *email;
     QLineEdit *job;
+    QLineEdit *hobby;
     QButtonGroup *group;
     QRadioButton *genderboy;
     QRadioButton *gendergirl;

@@ -42,9 +42,9 @@ newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
     topline->setMaximumHeight(150);
     topline->setMinimumHeight(150);
     photo = new QLabel(this);
-    photo->setPixmap(QPixmap("assets:/pic/mainpic/boy.PNG"));
+    photo->setPixmap(QPixmap("assets:/pic/mainpic/boy.png"));
     photo->setAttribute(Qt::WA_TranslucentBackground);//据说让背景透明
-    photo->setFixedSize(QPixmap("assets:/pic/mainpic/boy.PNG").size());
+    photo->setFixedSize(QPixmap("assets:/pic/mainpic/boy.png").size());
     //wlayout->addWidget(headphotolabel,0,Qt::AlignHCenter);//居中显示
     QHBoxLayout *hlayout = new QHBoxLayout(this);
     wlayout->addSpacing(20);
@@ -111,6 +111,10 @@ newfriendwidget::newfriendwidget(QWidget *parent) : QWidget(parent)
     job->setPlaceholderText("工作");
     wlayout->addWidget(job);
 
+    hobby = new QLineEdit(this);
+    hobby->setPlaceholderText("兴趣爱好");
+    wlayout->addWidget(hobby);
+
     firstimage = new QTextEdit(this);
     firstimage->setPlaceholderText("对他的第一印象");
     wlayout->addWidget(firstimage);
@@ -136,11 +140,11 @@ void newfriendwidget::button_checked()
             {
                 if(pButton ==genderboy)
                 {
-                      photo->setPixmap(QPixmap("assets:/pic/mainpic/boy.PNG"));
+                      photo->setPixmap(QPixmap("assets:/pic/mainpic/boy.png"));
                 }
                 else if(pButton == gendergirl)
                 {
-                      photo->setPixmap(QPixmap("assets:/pic/mainpic/girl.PNG"));
+                      photo->setPixmap(QPixmap("assets:/pic/mainpic/girl.png"));
                 }
 
             }

@@ -46,7 +46,8 @@ SOURCES += \
     dataprocess.cpp \
     newapptcpclient.cpp \
     networkdebughelper.cpp \
-    filescan.cpp
+    filescan.cpp \
+    qdebug2logcat.cpp
 
 
 HEADERS += \
@@ -70,7 +71,8 @@ HEADERS += \
     dataprocess.h \
     newapptcpclient.h \
     networkdebughelper.h \
-    filescan.h
+    filescan.h \
+    qdebug2logcat.h
 
 
 
