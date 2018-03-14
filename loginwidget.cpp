@@ -121,7 +121,7 @@ loginwidget::~loginwidget()
 {
     delete wlayout;
     delete testlabel;
-    delete networkdebug;
+    //delete networkdebug;
     loginclient->deleteLater();
 }
 //data/data/apkname/username/friendlist/num.

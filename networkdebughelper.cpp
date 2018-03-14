@@ -68,7 +68,7 @@ void networkdebughelper::sendMessage(QString word)
     out<<word;
     out.device()->seek(0);
     out<<(quint64) (block.size() - sizeof(quint64));
-    qDebug()<<(quint64) (block.size() - sizeof(quint64));
+    //qDebug()<<(quint64) (block.size() - sizeof(quint64));
 
     tcpSocket->write(block);
     //tcpSocket->disconnectFromHost();

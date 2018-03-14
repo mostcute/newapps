@@ -15,6 +15,7 @@ QString global_userID;
 int main(int argc, char *argv[])
 {
     installLogcatMessageHandler("yourLogTag");
+    //adb logcat -v time -s yourLogTag
     QApplication a(argc, argv);
     screen = a.primaryScreen();
     screensize = screen->availableSize();
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
     a.installEventFilter(&w);
     w.show();
     qDebug() <<"EVERY THIng oK";
+    qDebug() <<screensize_2.height()<<"*"<<screensize_2.width();
 
 
     return a.exec();

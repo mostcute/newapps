@@ -12,6 +12,7 @@
 #include "testwidget.h"
 #include "club.h"
 #include <QStackedWidget>
+#include "qanimationstackedwidget.h"
 #include "statusbar.h"
 
 class index : public QWidget
@@ -25,7 +26,7 @@ private:
     QVBoxLayout *wlayout;
 
     flistbottomline *bottomline;
-    QStackedWidget *centerline;
+    QAnimationStackedWidget *centerline;
     friendlist * myfriends;
     testwidget * myself;
     club * myclub;

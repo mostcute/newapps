@@ -9,16 +9,15 @@ index::index(QWidget *parent) : QWidget(parent)
     wlayout = new QVBoxLayout(this);;
     topline = new flisttopline(this);
     bottomline = new flistbottomline(this);
-    centerline = new QStackedWidget(this);
+    centerline = new QAnimationStackedWidget(this);
     myfriends = new friendlist(this);
     myself = new testwidget(this);
     myclub = new club(this);
     sta = new statusbar(this);
 
    // sta->setMinimumHeight(screensize_2.height()-screensize.height());
-
-    centerline->addWidget(myfriends);
     centerline->addWidget(myself);
+    centerline->addWidget(myfriends); 
     centerline->addWidget(myclub);
     connect(bottomline->group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(groupClicked()));
 
@@ -51,15 +50,18 @@ void index::groupClicked()
             {
                 if(pButton == bottomline->lbutton)
                 {
-                    centerline->setCurrentWidget(myself);
+                    //centerline->setCurrentWidget(myself);
+                    centerline->change_widget(myself);
                 }
                 else if(pButton == bottomline->mbutton)
                 {
-                    centerline->setCurrentWidget(myfriends);
+                    //centerline->setCurrentWidget(myfriends);
+                    centerline->change_widget(myfriends);
                 }
                 else if(pButton == bottomline->rbutton)
                 {
-                    centerline->setCurrentWidget(myclub);
+                    //centerline->setCurrentWidget(myclub);
+                    centerline->change_widget(myclub);
                 }
 
             }

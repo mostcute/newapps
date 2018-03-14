@@ -47,7 +47,8 @@ SOURCES += \
     newapptcpclient.cpp \
     networkdebughelper.cpp \
     filescan.cpp \
-    qdebug2logcat.cpp
+    qdebug2logcat.cpp \
+    qanimationstackedwidget.cpp
 
 
 HEADERS += \
@@ -72,7 +73,8 @@ HEADERS += \
     newapptcpclient.h \
     networkdebughelper.h \
     filescan.h \
-    qdebug2logcat.h
+    qdebug2logcat.h \
+    qanimationstackedwidget.h
 
 
 

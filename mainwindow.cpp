@@ -29,6 +29,7 @@ void mainwindow::login_success_slot(QString name)
      //show_stackwidget(create_indexview());
     ViewStack->setCurrentWidget(create_indexview());
     delete_loginwidget();
+    //qDebug()<<"this is ok";
 
 
 }
@@ -63,6 +64,7 @@ QWidget  * mainwindow::create_indexview()
     indexview = new index(this);
     ViewStack->addWidget(indexview);
     connect(indexview->topline,SIGNAL(addfriend()),this, SLOT(add_friend_slot()));
+    //qDebug()<<"this is ok";
     return indexview;
 
 }
